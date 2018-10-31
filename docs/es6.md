@@ -6,7 +6,7 @@ Let表示变量，const表示常量，常量不可变，不可变是指常量指
 
 ## 2.字符串替换
 
-用··表示，字符串替换可用¥{name}替换，例如
+用··表示，字符串替换可用${name}替换，例如
 ```javascript
 const name = 'kenan';
 Console.log(`my name is ${name}`); //my name is kenan.
@@ -54,3 +54,64 @@ people('torry'); //输出 hello torry
 
 对象可简化赋值，Es5对象提供了Object.assign()这个方法来实现浅复制
 Object.assign() 可以把任意多个源对象自身可枚举的属性拷贝给目标对象，然后返回目标对象。第一参数即为目标对象。在实际项目中，我们为了不改变源对象。一般会把目标对象传为{}
+
+## 5.对象和数组可解构赋值例如
+
+```javascript
+var people = {
+	name: 'kenan',
+	age: 20
+};
+const {name, age} = people;
+console.log(`${name} ---- ${age}`);
+
+```
+## 6.展开运算符
+
+三个点...就是展开运算符，组装对象或数组
+
+```javascript
+//数组
+    const color = ['red', 'yellow']
+    const colorful = [...color, 'green', 'pink']
+    console.log(colorful) //[red, yellow, green, pink]
+```
+
+有时候我们想获取数组或者对象除了前几项或者除了某几项的其他项
+
+```javascript
+//数组
+    const number = [1,2,3,4,5]
+    const [first, ...rest] = number
+    console.log(rest) //2,3,4,5
+    //对象
+    const user = {
+        username: 'lux',
+        gender: 'female',
+        age: 19,
+        address: 'peking'
+    }
+    const { username, ...rest } = user
+    console.log(rest) //{"address": "peking", "age": 19, "gender": "female"
+}
+```
+对于 Object 而言，还可以用于组合成新的 Object 。(ES2017 stage-2 proposal) 当然如果有重复的属性名，右边覆盖左边
+
+```javascript
+const first = {
+        a: 1,
+        b: 2,
+        c: 6,
+    }
+    const second = {
+        c: 3,
+        d: 4
+    }
+    const total = { ...first, ...second }
+    console.log(total) // { a: 1, b: 2, c: 3, d: 4 }
+```
+
+
+
+
+
