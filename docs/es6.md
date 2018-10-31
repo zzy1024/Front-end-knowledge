@@ -114,8 +114,38 @@ const first = {
 
 ## 7.class 类
 
+由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。
 
+```javascript
+class Point {
+  constructor(){
+    // ...
+  }
+}
 
+Object.assign(Point.prototype, {
+  toString(){},
+  toValue(){}
+});
+```
+另外，类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
+
+```
+class Point {
+  constructor(x, y) {
+    // ...
+  }
+
+  toString() {
+    // ...
+  }
+}
+
+Object.keys(Point.prototype)
+// []
+Object.getOwnPropertyNames(Point.prototype)
+// ["constructor","toString"]
+```
 
 
 
