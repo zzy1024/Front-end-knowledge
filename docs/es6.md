@@ -7,13 +7,13 @@ Let表示变量，const表示常量，常量不可变，不可变是指常量指
 ## 2.字符串替换
 
 用··表示，字符串替换可用¥{name}替换，例如
-```
+```javascript
 const name = 'kenan';
 Console.log(`my name is ${name}`); //my name is kenan.
 
 ```
 
-```
+```javascript
 // 1.includes：判断是否包含然后直接返回布尔值
     const str = 'hahay'
     console.log(str.includes('y')) // true
@@ -42,7 +42,7 @@ Console.log(`my name is ${name}`); //my name is kenan.
 
 函数可用缩写的形式，变量可设置默认值
 
-```
+```javascript
 var people = (name = 'zzy') => {
 	const fullName = 'hello ' + name;
 	return fullName;
