@@ -114,6 +114,7 @@ const first = {
 
 ## 7.class 类
 
+类都具有constructor默认方法，如果不写程序也会自动加上
 由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。
 
 ```javascript
@@ -146,6 +147,73 @@ Object.keys(Point.prototype)
 Object.getOwnPropertyNames(Point.prototype)
 // ["constructor","toString"]
 ```
+### 类的继承
+
+class类的继承通过extends关键字继承，子类中必须调用super方法，用来新建父类的this对象，否则新建实例时会报错。
+这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。如果不调用super方法，子类就得不到this对象。
+
+```javascript
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y); // 调用父类的constructor(x, y)
+    this.color = color;
+  }
+
+  toString() {
+    return this.color + ' ' + super.toString(); // 调用父类的toString()
+  }
+}
+```
+Object.getPrototypeOf()方法可以用来从子类上获取父类。可以使用这个方法判断，一个类是否继承了另一个类。
+
+### Mixin 模式的实现
+
+```javascript
+//Mixin 指的是多个对象合成一个新的对象，新对象具有各个组成成员的接口。它的最简单实现如下。
+
+const a = {
+  a: 'a'
+};
+const b = {
+  b: 'b'
+};
+const c = {...a, ...b}; // {a: 'a', b: 'b'}
+//上面代码中，c对象是a对象和b对象的合成，具有两者的接口。
+
+//下面是一个更完备的实现，将多个类的接口“混入”（mix in）另一个类。
+
+function mix(...mixins) {
+  class Mix {}
+
+  for (let mixin of mixins) {
+    copyProperties(Mix.prototype, mixin); // 拷贝实例属性
+    copyProperties(Mix.prototype, Reflect.getPrototypeOf(mixin)); // 拷贝原型属性
+  }
+
+  return Mix;
+}
+
+function copyProperties(target, source) {
+  for (let key of Reflect.ownKeys(source)) {
+    if ( key !== "constructor"
+      && key !== "prototype"
+      && key !== "name"
+    ) {
+      let desc = Object.getOwnPropertyDescriptor(source, key);
+      Object.defineProperty(target, key, desc);
+    }
+  }
+}
+//上面代码的mix函数，可以将多个对象合成为一个类。使用的时候，只要继承这个类即可。
+
+class DistributedEdit extends mix(Loggable, Serializable) {
+  // ...
+}
+```
+
+
+
+
 
 
 
