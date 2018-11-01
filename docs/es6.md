@@ -2,7 +2,7 @@
 
 ## 1.let和const变量
 
-Let表示变量，const表示常量，常量不可变，不可变是指常量指向的地址不变
+let表示变量，const表示常量，常量不可变，不可变是指常量指向的地址不变
 
 ## 2.字符串替换
 
@@ -93,7 +93,7 @@ console.log(`${name} ---- ${age}`);
         address: 'peking'
     }
     const { username, ...rest } = user
-    console.log(rest) //{"address": "peking", "age": 19, "gender": "female"
+    console.log(rest); //{"address": "peking", "age": 19, "gender": "female"
 }
 ```
 对于 Object 而言，还可以用于组合成新的 Object 。(ES2017 stage-2 proposal) 当然如果有重复的属性名，右边覆盖左边
@@ -131,7 +131,7 @@ Object.assign(Point.prototype, {
 ```
 另外，类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
 
-```
+```javascript
 class Point {
   constructor(x, y) {
     // ...
@@ -210,8 +210,39 @@ class DistributedEdit extends mix(Loggable, Serializable) {
   // ...
 }
 ```
+## 8.promise
+promise可以获取异步操作的消息，有三种状态pending（进行中）、fulfilled（已成功）和rejected（已失败）。
+下面时一个Promise实现ajax的例子：
 
+```javascript
+const getJson = function(url){
+  const promise = new Promise(function(resolve, reject){
+      const handler = function(){
+          if(this.readyState !== 4){
+              return;
+          }
+          if(this.status === 200){
+              resolve(this.response);
+          }else{
+              reject(new Error(this.statusText))
+          }
+      }
+      const client = new XMLHttpRequest();
+      client.open("GET", url);
+      client.onreadystatechange = handler;
+      client.responseType = "json";
+      client.setRequestHeader("Accept", "application/json");
+      client.send();
+  });
+  return promise;
+};
 
+getJson("/posts.json").then(function(json) {
+  console.log('Contents: ' + json);
+}, function(error) {
+  console.error('出错了', error);
+});
+```
 
 
 
