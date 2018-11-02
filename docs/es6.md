@@ -226,7 +226,7 @@ const getJson = function(url){
           }else{
               reject(new Error(this.statusText))
           }
-      }
+        }
       const client = new XMLHttpRequest();
       client.open("GET", url);
       client.onreadystatechange = handler;
