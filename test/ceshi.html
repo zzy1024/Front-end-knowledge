@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <style>
+        *{margin:0;padding:0;}
+        .sanjiaoxing{width:0;height:0;border-width:20px;border-style: solid;border-color:transparent transparent red transparent;}
+        .out{overflow:hidden;}
+        .left{float:left;width:200px;background: rebeccapurple;padding-bottom:9999px;margin-bottom:-9999px;}
+        .right{margin-left:220px;background: #0bb20c;padding-bottom:9999px;margin-bottom:-9999px;}
+    </style>
+</head>
+<body>
+<div class="sanjiaoxing">
+
+</div>
+<div>
+    如果将浮点数生成逗号的数字<br/>
+    <script>
+        function commafy(num){
+            return num && num.toString().replace(/(\d)(?=(\d{3})+\.)/g,function($1, $2){
+                console.log($1, $2);
+                return $1 + ',';
+            });
+        }
+        console.log(commafy(1234567890122345.198));
+    </script>
+</div>
+<div>
+    实现数组的随机排序
+    <script>
+        const arr =[1,2,3,4,5,6,7,8,9,0,11,22,33,44,55,66,77,88];
+        arr.sort(function(){
+            return Math.random() - 0.5;
+        });
+        console.log(arr);
+    </script>
+</div>
+    原型继承方法
+    <script>
+        function People(){
+            this.type = "man";
+        }
+        function Child(){
+            this.name = 'xiaoming';
+            this.age = '21';
+        }
+        Child.prototype = new People();
+        const baby = new Child();
+        console.log(baby.type, baby.name, baby.age);
+    </script>
+<div>
+
+</div>
+<div class="out">
+    <div class="left">
+        我随机里面的内容<br/><br/><br/><br/><br/>
+    </div>
+    <div class="right">
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
+</div>
+</body>
+</html>

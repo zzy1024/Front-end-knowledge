@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="../../../../ftpDemo/fullSiteSpread.js"></script>
+</head>
+<body>
+<h2>要学习巩固的知识</h2>
+1.异步回调地狱<br/>
+
+2.模拟bind函数<br/>
+
+3.模拟sleep休眠方法<br/>
+<pre>
+    Promise方法模拟：
+    const sleep = function(ms){
+        const temp = new Promise((resolve) => {
+            console.log(11);
+            setTimeout(resolve, ms);
+        });
+        return temp;
+    };
+    sleep(1000).then(function(){
+        console.log(22);
+    });
+
+    通过async封装
+
+    function sleep(ms){
+      return new Promise((resolve)=>setTimeout(resolve,ms));
+    }
+    async function test(){
+      var temple=await sleep(1000);
+      console.log(1111)
+      return temple
+    }
+    test();
+    //延迟1000ms输出了1111
+
+    通过generate来实现
+
+    function* sleep(ms){
+       yield new Promise(function(resolve,reject){
+                 console.log(111);
+                 setTimeout(resolve,ms);
+            })
+    }
+    sleep(500).next().value.then(function(){console.log(2222)})
+</pre>
+4.简单的实现一个promise
+<pre>
+    //
+</pre>
+
+5.实现js中所有对象的深度克隆（包装对象，Date对象，正则对象）
+<pre>
+    //
+</pre>
+6.html5 Drag 拖动api
+<pre>
+    dragstart：事件主体是被拖放元素，在开始拖放被拖放元素时触发，。
+    darg：事件主体是被拖放元素，在正在拖放被拖放元素时触发。
+    dragenter：事件主体是目标元素，在被拖放元素进入某元素时触发。
+    dragover：事件主体是目标元素，在被拖放在某元素内移动时触发。
+    dragleave：事件主体是目标元素，在被拖放元素移出目标元素是触发。
+    drop：事件主体是目标元素，在目标元素完全接受被拖放元素时触发。
+    dragend：事件主体是被拖放元素，在整个拖放操作结束时触发
+</pre>
+7.多行元素的文本省略号
+<pre>
+    display: -webkit-box
+    -webkit-box-orient:vertical
+    -web-line-clamp:3
+    overflow:hidden
+</pre>
+8.算法
+
+9.webpack
+
+10.vue源码学习
+
+11.node学习
+
+12.
+</body>
+</html>
