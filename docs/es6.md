@@ -243,6 +243,31 @@ getJson("/posts.json").then(function(json) {
   console.error('出错了', error);
 });
 ```
+## 9.数组的扩展
+1.扩展运算符(...)
+将一个数组转化成用逗号分隔的参数序列，例如：取数组中的最大值
+
+```javascript
+//数组取最大值
+//es5
+Math.max.apply(null,[1,2,3,3,4]);
+//es6
+Math.max(...[1,2,3,3,4]);
+
+//复制数组
+
+//es5
+const a1 = [1,2,3];
+const a2 = a1.concat();
+a2[1] = 5;
+console.log(a2, a1); //[1,5,3], [1,2,3]
+
+//es6
+const a1 = [1,2,3];
+const a2 = [...a1];
+```
+
+
 
 
 
