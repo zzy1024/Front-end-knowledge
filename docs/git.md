@@ -95,6 +95,6 @@ git push origin v1.0.3.1:refs/tags/v1.0.3.1
 
 5、等待测试和运维人员操作完成确认BUG修复成功后删除issue分支：
 ```
-git branch -d issue
+git branch -d issue //删除分支
 ```
 
