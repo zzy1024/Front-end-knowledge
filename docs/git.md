@@ -98,7 +98,7 @@ git push origin v1.0.3.1:refs/tags/v1.0.3.1
 git branch -d issue //删除分支
 ```
 
-##常用操作
+## 4、常用操作
 
 ```
 查看分支：git branch
@@ -122,7 +122,7 @@ git branch -d issue //删除分支
 恢复工作现场：git stash pop
 
 ```
-##单个文件回退版本
+## 5、单个文件回退版本
 
 ```
 1.首先复制文件所在目录路径，这里路径我们默认为 src/abc.html，供下方代码使用
