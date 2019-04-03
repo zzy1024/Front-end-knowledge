@@ -2,7 +2,7 @@
 
 ## 一、安装配置git
 
-###1.配置git：
+### 1.配置git：
 
 ```
 #Administrator替换为你的名字
@@ -10,7 +10,7 @@
 git config --global user.name "Administrator"
 git config --global user.email "admin@example.com"
 ```
-###2.创建RSA证书后打开git bash后输入
+### 2.创建RSA证书后打开git bash后输入
 
 ```
 #youname@example.com替换为公司给你提供的邮箱地址
@@ -19,7 +19,7 @@ ssh-keygen -t rsa -C "youname@example.com"
 之后会在C:\Users\Administrator.ssh\生成两个文件id_rsa，id_rsa.pub，这
 两个一个是私钥，一个是公钥，创建过程中会提示输入密码，直接忽略就行了。
 
-###3.获取公钥
+### 3.获取公钥
 SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录，有 .pub 后缀的文件就是公钥，另一个文件则是密钥。
 ```
 $ cd ~/.ssh
@@ -41,19 +41,19 @@ NrRFi9wrf+M7Q== schacon@agadorlaptop.local
 
 ## 二、开发人员日常操作
 
-###1、获取项目
+### 1、获取项目
 
 ```
 git clone ssh://xxxxxxxxx #具体的克隆链接可咨询他人
 ```
 
-###2、切换分支
+### 2、切换分支
 
 ```
 git checkout -b develop # 创建本地分支的同时切换到新创建的分支上
 git checkout develop #切换分支
 ```
-###3、获取提交代码
+### 3、获取提交代码
 在正常的工作分支(例如：develop)上进行日常开发，需要共享代码或更新时
    推送到仓库： a> 本地提交：
 
@@ -76,15 +76,15 @@ git push origin v1.0.0:refs/tags/v1.0.0
 git checkout -b issue v1.0.3
 
 ```
-2、在该issue分⽀下修复BUG：
+2、在该issue分支下修复BUG：
 
-3、在issue分⽀下提交本次修复的内容，并打新的版本号：
+3、在issue分支下提交本次修复的内容，并打新的版本号：
 ```
 git commit -a -m '修复v1.0.3版本BUG'
 git tag -a v1.0.3.1
 ```
 
-4、合并⾄正常⼯作分⽀(例如：develop)并推送该更新：
+4、合并至正常工作分支(例如：develop)并推送该更新：
 
 ```
 git checkout develop
@@ -93,7 +93,7 @@ git push origin develop:refs/for/develop
 git push origin v1.0.3.1:refs/tags/v1.0.3.1
 ```
 
-5、等待测试和运维⼈员操作完成确认BUG修复成功后删除issue分支：
+5、等待测试和运维人员操作完成确认BUG修复成功后删除issue分支：
 ```
 git branch -d issue
 ```
