@@ -121,8 +121,25 @@ git branch -d issue
 
 恢复工作现场：git stash pop
 
-我是第一次修改
+```
+##单个文件回退版本
 
 ```
+1.首先复制文件所在目录路径，这里路径我们默认为 src/abc.html，供下方代码使用
 
+2.git log src/abc.html     #查看abc.html的提交日志
+
+3.找到想要回退的版本号：例如 fcd2093 , 通过 
+git reset fcd2093 src/abc.html     #回退到fcd2093版本号，这里回退的是版本号，就是说本地内容并不会修改
+
+4.提交本次回退
+git commit -m "注释内容"
+
+5.将本地文件内容进行回退
+git checkout a.jsp    #因为步骤3回退了版本号，这是服务器上的版本已经正确，但是本地的版本还是未变，这里我们 git checkout 文件路径，就会把本地的修改都丢弃，代码也会变成回退的目标版本，不太明白的可以查看下checkout的意义。
+
+6.push到远程目录
+git push origin branch
+
+```
 
