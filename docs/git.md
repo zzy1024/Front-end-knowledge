@@ -98,3 +98,48 @@ git push origin v1.0.3.1:refs/tags/v1.0.3.1
 git branch -d issue //删除分支
 ```
 
+##常用操作
+
+```
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+查看分支合并图：git log --graph
+
+暂存当前分支代码（工作现场）：git stash 
+
+查看当前分支的代码储存现场：git stash list
+
+恢复工作现场：git stash pop
+
+```
+##单个文件回退版本
+
+```
+1.首先复制文件所在目录路径，这里路径我们默认为 src/abc.html，供下方代码使用
+
+2.git log src/abc.html     #查看abc.html的提交日志
+
+3.找到想要回退的版本号：例如 fcd2093 , 通过 
+git reset fcd2093 src/abc.html     #回退到fcd2093版本号，这里回退的是版本号，就是说本地内容并不会修改
+
+4.提交本次回退
+git commit -m "注释内容"
+
+5.将本地文件内容进行回退
+git checkout a.jsp    #因为步骤3回退了版本号，这是服务器上的版本已经正确，但是本地的版本还是未变，这里我们 git checkout 文件路径，就会把本地的修改都丢弃，代码也会变成回退的目标版本，不太明白的可以查看下checkout的意义。
+
+6.push到远程目录
+git push origin branch
+
+```
+
