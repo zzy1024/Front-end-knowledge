@@ -54,9 +54,8 @@ git checkout -b develop # 创建本地分支的同时切换到新创建的分支
 git checkout develop #切换分支
 ```
 ### 3、获取提交代码
-
-在正常的工作分支(例如：develop)上进行日常开发，需要共享代码或更新时推送到仓库： a> 本地提交：
-
+在正常的工作分支(例如：develop)上进行日常开发，需要共享代码或更新时
+   推送到仓库： a> 本地提交：
 
 ```
 git add a.txt
@@ -64,14 +63,14 @@ git commit -m '⼀次普通的本地提交'    #本地提交
 git pull origin develop     #获取其他同事的更新
 git push origin develop     #推送到仓库,推送前先获取
 
-# 项目阶段性开发完成后，打版本号通知测试人员进行测试：
+#项⽬阶段性开发完成后，打版本号通知测试⼈员进⾏测试：
 git tag -a v1.0.0
 git push origin v1.0.0:refs/tags/v1.0.0
 ```
 
 ## 3、线上BUG处理流程
 
-1、基于线上的版本(例如：v1.0.3)创建一个分支(例如：issue)：
+1、基于线上的版本(例如：v1.0.3)创建⼀个分支(例如：issue)：
 
 ```
 git checkout -b issue v1.0.3
@@ -96,10 +95,10 @@ git push origin v1.0.3.1:refs/tags/v1.0.3.1
 
 5、等待测试和运维人员操作完成确认BUG修复成功后删除issue分支：
 ```
-git branch -d issue //删除分支
+git branch -d issue
 ```
 
-## 4、常用操作
+##常用操作
 
 ```
 查看分支：git branch
@@ -123,7 +122,7 @@ git branch -d issue //删除分支
 恢复工作现场：git stash pop
 
 ```
-## 5、单个文件回退版本
+##单个文件回退版本
 
 ```
 1.首先复制文件所在目录路径，这里路径我们默认为 src/abc.html，供下方代码使用
