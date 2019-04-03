@@ -97,3 +97,30 @@ git push origin v1.0.3.1:refs/tags/v1.0.3.1
 ```
 git branch -d issue
 ```
+
+##常用操作
+
+```
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+查看分支合并图：git log --graph
+
+暂存当前分支代码（工作现场）：git stash 
+
+查看当前分支的代码储存现场：git stash list
+
+恢复工作现场：git stash pop
+
+```
+
+
