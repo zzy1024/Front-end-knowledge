@@ -68,7 +68,7 @@ git tag -a v1.0.0
 git push origin v1.0.0:refs/tags/v1.0.0
 ```
 
-## 3、线上BUG处理流程
+## 三、线上BUG处理流程
 
 1、基于线上的版本(例如：v1.0.3)创建⼀个分支(例如：issue)：
 
@@ -98,7 +98,7 @@ git push origin v1.0.3.1:refs/tags/v1.0.3.1
 git branch -d issue
 ```
 
-##常用操作
+## 四、常用操作
 
 ```
 查看分支：git branch
@@ -122,7 +122,7 @@ git branch -d issue
 恢复工作现场：git stash pop
 
 ```
-##单个文件回退版本
+## 五、单个文件回退版本
 
 ```
 1.首先复制文件所在目录路径，这里路径我们默认为 src/abc.html，供下方代码使用
