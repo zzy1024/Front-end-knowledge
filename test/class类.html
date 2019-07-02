@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Class类 Demo</title>
+</head>
+<body>
+<script>
+    class People{
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        showName() {
+            console.log(this.name);
+        }
+
+        showAge() {
+            console.log(this.age);
+        }
+
+        addAge() {
+            this.age++;
+        }
+    }
+
+    class Women extends People{
+        constructor(name, age, sex) {
+            super(name, age);
+            this.sex = '女'
+        }
+        showSex() {
+            console.log(this.sex);
+        }
+    }
+
+    let p = new People('dawei', 22);
+    p.showName();
+    p.showAge();
+    p.addAge();
+    p.showAge();
+
+    let w = new Women('xiaoli', 18);
+    w.showName();
+    w.showSex();
+    const o = {
+        one: '',
+        two: '',
+        three: ''
+    };
+    const arr = [1, 2, 3, 4];
+
+    [o.one, o.two, o.three] = arr;
+    console.log(o);
+
+</script>
+
+</body>
+</html>

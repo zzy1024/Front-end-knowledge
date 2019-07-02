@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>二维码图片js解析路径</title>
+</head>
+<h2>二维码生成测试</h2>
+<!--<input type="text" style="height: 30px;width:300px;" />
+<input type="button" value="生成" style="height: 30px;" />-->
+<img src="erweima.jpg" title="二维码" onClick="getUrl(this,'img-url')" />
+<input type="button" value="解析" style="height: 30px;" />
+<div id="codeUrl"></div>
+<script src="llqrcode.js" type="text/javascript" charset="utf-8"></script>
+<body>
+    <script>
+        //codeUrl
+        function getUrl(e,param){
+            analyticCode.getUrl(param,e,function(url1,url2){
+                /*e.nextElementSibling.innerHTML = url1;
+                e.previousElementSibling.src = url2;*/
+                console.log(url1, url2);
+            });
+        }
+        let getObjectURL = function(file){
+            let url = null ;
+            if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+
+
+        window.analyticCode = {
+            getUrl : function(type,elem,fn){
+                let url = null,src = null;
+
+                if(type === 'img-url'){
+                    url = elem.src;
+                }else if(type === 'file-url' && elem.files.length > 0){
+                    url = getObjectURL(elem.files[0]);
+                }
+                qrcode.decode(url);
+                qrcode.callback = function(imgMsg){
+                    fn(imgMsg,url);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
